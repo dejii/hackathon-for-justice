@@ -1,0 +1,1 @@
+gcloud beta functions deploy sample_python --env-vars-file .env.yaml --runtime python37 --trigger-http --project hackathon-justice
