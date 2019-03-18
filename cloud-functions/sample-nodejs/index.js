@@ -29,8 +29,8 @@ exports.sample_nodejs = async (req, res) => {
 
 const handleGET = async (req, res) => {
 
-    return {
+    return res.json({
         statusCode: 200,
         message: 'Hello nodejs!'
-    }
+    });
 };
