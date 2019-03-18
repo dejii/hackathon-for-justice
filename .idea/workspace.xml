@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f36ad295-ce1e-4717-b470-8e6a04e6a2d3" name="Default Changelist" comment="" />
+    <list default="true" id="f36ad295-ce1e-4717-b470-8e6a04e6a2d3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-functions/sample-nodejs/.env.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-functions/sample-nodejs/deploy.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cloud-functions/sample-nodejs/hackathon-justice-eb7f935dd3f5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cloud-functions/sample-python/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/cloud-functions/sample-python/main.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,10 +28,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cloud-functions/sample-nodejs/.env.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cloud-functions/sample-nodejs/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cloud-functions/sample-python/deploy.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="63" lean-forward="true" selection-start-column="63" selection-end-column="63" />
+              <caret column="42" selection-start-column="29" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -34,11 +55,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cloud-functions/sample-python/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+            <state relative-caret-position="510">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -52,12 +73,16 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/cloud-functions/.env-dev.yaml" />
         <option value="$PROJECT_DIR$/cloud-functions/sample-python/deploy.sh" />
         <option value="$PROJECT_DIR$/cloud-functions/sample-python/main.py" />
+        <option value="$PROJECT_DIR$/cloud-functions/sample-nodejs/index.js" />
       </list>
     </option>
   </component>
@@ -65,6 +90,7 @@
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -81,6 +107,12 @@
               <item name="hackathon" type="b2602c69:ProjectViewProjectNode" />
               <item name="hackathon" type="462c0819:PsiDirectoryNode" />
               <item name="cloud-functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hackathon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hackathon" type="462c0819:PsiDirectoryNode" />
+              <item name="cloud-functions" type="462c0819:PsiDirectoryNode" />
+              <item name="sample-nodejs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hackathon" type="b2602c69:ProjectViewProjectNode" />
@@ -106,6 +138,7 @@
       <recent name="$PROJECT_DIR$/cloud-functions/sample-python" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/cloud-functions/sample-nodejs" />
       <recent name="$PROJECT_DIR$/cloud-functions" />
     </key>
   </component>
@@ -131,25 +164,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552945913271</updated>
-      <workItem from="1552945914830" duration="780000" />
+      <workItem from="1552945914830" duration="2313000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="780000" />
+    <option name="totallyTimeSpent" value="2313000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24964234" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32891566" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32891566" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -172,9 +204,6 @@
     <entry file="file://$PROJECT_DIR$/cloud-functions/sample-python/hackathon-justice-eb7f935dd3f5.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud-functions/sample-python/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/cloud-functions/sample-python/.env-dev.yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -191,14 +220,27 @@
     <entry file="file://$PROJECT_DIR$/cloud-functions/sample-python/deploy.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="63" lean-forward="true" selection-start-column="63" selection-end-column="63" />
+          <caret column="42" selection-start-column="29" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cloud-functions/sample-python/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="38" column="38" lean-forward="true" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        <state relative-caret-position="510">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-functions/sample-python/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-functions/sample-nodejs/.env.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cloud-functions/sample-nodejs/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
         </state>
       </provider>
     </entry>

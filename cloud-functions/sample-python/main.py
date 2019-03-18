@@ -35,15 +35,15 @@ def sample_python(request):
 
 # [END functions_sample_python]
 
-# if __name__ == "__main__":
-#     from flask import Flask, request
-#
-#     app = Flask(__name__)
-#
-#
-#     @app.route('/', methods=['GET'])
-#     def index():
-#         return sample_python(request)
-#
-#
-#     app.run('127.0.0.1', 8000, debug=True)
+if __name__ == "__main__":
+    from flask import Flask, request
+
+    app = Flask(__name__)
+
+
+    @app.route('/', methods=['GET'])
+    def index():
+        return sample_python(request)
+
+
+    app.run('127.0.0.1', 8000, debug=True)
