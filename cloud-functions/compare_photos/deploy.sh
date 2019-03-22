@@ -1,0 +1,1 @@
+gcloud beta functions deploy compare_photos --env-vars-file .env.yaml --runtime python37 --trigger-http --project hackathon-justice

@@ -1,0 +1,97 @@
+<!--
+  Generated template for the FileMissingReportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon color="light" name="menu"></ion-icon>
+    </button>
+    <ion-title>File Missing Report</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-md-2></ion-col>
+      <ion-col col-md-8>
+        <ion-card>
+          <ion-card-content>
+
+            <form #reportForm="ngForm">
+              <ion-item-divider><strong>ABOUT VICTIM</strong></ion-item-divider>
+              <ion-item>
+                <ion-label stacked>Full Name</ion-label>
+                <ion-input required ngModel name="fullName" type="text"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label stacked>Age Group</ion-label>
+                <ion-select>
+                  <ion-option value="<18">Under 18</ion-option>
+                  <ion-option value="18-65">18-65</ion-option>
+                  <ion-option value="65>">65 and Above</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label stacked>Last Seen Location</ion-label>
+                <ion-input required ngModel name="lastSeen" type="text"></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <p margin-bottom="5px">Add a picture</p>
+                <input id="image" type="file" accept="image/*" (change)="changeListener($event)">
+              </ion-item>
+              <p *ngIf="uploadPercent" style="text-align: left; margin-left: 15px;">
+                <b style="color: #8b2701">upload: {{uploadPercent | async | number: '1.0-0'}}%</b>
+              </p>
+
+              <p *ngIf="uploadPercent" style="text-align: center; margin-left: 15px;">
+              <b>PREVIEW</b></p>
+              <div *ngIf="showPreview">
+                <img class="center" [src]="base64Picture" style="height: 30%; width: 30%;">
+              </div>
+
+
+              <ion-item>
+                <ion-label stacked>Description (If any)</ion-label>
+                <ion-textarea ngModel name="description"></ion-textarea>
+              </ion-item>
+            </form>
+
+            <ion-item-divider><strong>CONTACT</strong></ion-item-divider>
+
+            <ion-item>
+              <ion-label stacked>Contact Name</ion-label>
+              <ion-input required ngModel name="contactName" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Phone Number/Email</ion-label>
+              <ion-input required ngModel name="contact" type="text"></ion-input>
+            </ion-item>
+
+
+
+            <ion-row margin-top="10px">
+              <ion-col col-md-3 col-1></ion-col>
+              <ion-col col-md-6 col-10>
+                <!--<button [disabled]="uploadUrl === '' || !reportForm.valid" block-->
+                <button block
+                        ion-button (click)="fileReport(reportForm)">FILE REPORT</button>
+              </ion-col>
+              <ion-col col-md-3 col-1></ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-md-2></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

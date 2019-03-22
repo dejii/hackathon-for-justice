@@ -1,0 +1,229 @@
+<!--
+  Generated template for the RequestHelpPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon color="light" name="menu"></ion-icon>
+    </button>
+    <ion-title>Request Help</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+
+  <ion-fab bottom right>
+    <button (click)="requestHelp()" [disabled]="disableButton"
+            style="" ion-fab><ion-icon name="checkmark"></ion-icon></button>
+  </ion-fab>
+
+  <button (click)="fullScreen()">FULL</button>
+
+  <ion-grid>
+    <ion-row text-center>
+      <!--<ion-col col-md-2></ion-col>-->
+      <ion-card>
+        <ion-card-content>
+
+          <ion-segment [(ngModel)]="victim">
+            <ion-segment-button value="yes">
+              I am the victim
+            </ion-segment-button>
+            <ion-segment-button value="no">
+              I am not the victim
+            </ion-segment-button>
+          </ion-segment>
+
+
+          <form #victimForm="ngForm" *ngIf="victim === 'yes'">
+
+            <p style="padding-top: 5px; padding-bottom: 5px; margin: 5px;"
+               *ngIf="formattedAddress !== ''"><b>Phone's Location: {{formattedAddress}}</b></p>
+
+            <!--<ion-item>-->
+            <!--<p margin-bottom="5px">Add a picture- (Optional)</p>-->
+            <!--<input type="file" accept="image/*;capture=camera" (change)="changeListener($event)">-->
+            <!--</ion-item>-->
+            <p *ngIf="uploadPercent" style="">
+              <b style="color: #8b2701">UPLOAD: {{uploadPercent | async | number: '1.0-0'}}%
+                &nbsp; &nbsp;<ion-spinner *ngIf="disableButton"></ion-spinner>
+              </b>
+            </p>
+
+            <p *ngIf="uploadPercent" style="text-align: center; margin-left: 15px;">
+              <b>PREVIEW</b></p>
+            <div *ngIf="showPreview">
+              <img class="center" [src]="base64Picture" style="height: 30%; width: 30%;">
+            </div>
+
+            <!--<agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">-->
+            <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
+            <!--</agm-map>-->
+
+            <!--<ngui-map-->
+            <!--zoom="13"-->
+            <!--center="37.775, -122.434"-->
+            <!--(mapReady$)="onMapReady($event)"-->
+            <!--(mapClick)="onMapClick($event)"-->
+            <!--(idle)="onIdle($event)"-->
+            <!--mapTypeId="satellite">-->
+            <!--<marker *ngFor="let pos of positions"-->
+            <!--[position]="pos"-->
+            <!--(initialized$)="onMarkerInit($event)"></marker>-->
+            <!--</ngui-map>-->
+
+
+
+            <div *ngIf="showWebcam && !webcamImage" style="margin: 0 auto">
+              <webcam
+                [height]="150" [width]="400" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+                [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
+                [videoOptions]="videoOptions"
+                [imageQuality]="1"
+                (cameraSwitched)="cameraWasSwitched($event)"
+                (initError)="handleInitError($event)"
+              ></webcam>
+            </div>
+
+
+            <ion-row>
+              <ion-col col-md-4 col-4></ion-col>
+              <ion-col col-md-4 col-4>
+                <!--<button [disabled]="uploadUrl === '' || !victimForm.valid" block-->
+                <button *ngIf="!webcamImage" small round ion-button (click)="triggerSnapshot()">CAPTURE</button>
+              </ion-col>
+              <ion-col col-md-4 col-4></ion-col>
+            </ion-row>
+
+            <div class="snapshot" *ngIf="webcamImage">
+              <!--<h2>Nice one!</h2>-->
+              <img [src]="webcamImage.imageAsDataUrl" style="height: 40%; width: 40%; margin: 0 auto"/>
+            </div>
+
+            <ion-row>
+              <ion-col col-md-4 col-3></ion-col>
+              <ion-col col-md-4 col-4 style="margin: 0 auto;">
+                <!--<button [disabled]="uploadUrl === '' || !victimForm.valid" block-->
+                <button small round [disabled]="disableButton"
+                        ion-button *ngIf="webcamImage" (click)="webcamImage = null; disableButton = true; uploadPercent = undefined">RETAKE</button>
+              </ion-col>
+              <ion-col col-md-4 col-4></ion-col>
+            </ion-row>
+
+            <ion-item margin-bottom="10px">
+              <ion-label stacked>Full Name</ion-label>
+              <ion-input required [(ngModel)]="formName" name="fullName" type="text"></ion-input>
+            </ion-item>
+
+
+            <ion-row>
+              <ion-item>
+                <ion-label stacked>How can we find you? (optional description)</ion-label>
+                <ion-textarea required [(ngModel)]="formContact" name="locationDetails"></ion-textarea>
+              </ion-item>
+            </ion-row>
+
+
+
+            <ion-row margin-top="10px">
+              <ion-col col-md-3 col-1></ion-col>
+              <ion-col col-md-6 col-10>
+                <!--<button [disabled]="uploadUrl === '' || !victimForm.valid" block-->
+                <button block [disabled]="disableButton"
+                        ion-button (click)="requestHelp()">REQUEST HELP</button>
+              </ion-col>
+              <ion-col col-md-3 col-1></ion-col>
+            </ion-row>
+          </form>
+
+
+
+
+          <form #nonVictimForm="ngForm" *ngIf="victim === 'no'">
+
+            <ion-item>
+              <ion-label stacked>Victim's Name (optional)</ion-label>
+              <ion-input  ngModel name="victimName" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Victim's Age Group</ion-label>
+              <ion-select required ngModel name="ageGroup">
+                <ion-option value="<18">Under 18</ion-option>
+                <ion-option value="18-65">18-65</ion-option>
+                <ion-option value="65>">65 and Above</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Victim's Gender</ion-label>
+              <ion-select ngModel name="sex">
+                <ion-option value="Male">Male</ion-option>
+                <ion-option value="Female">Female</ion-option>
+              </ion-select>
+            </ion-item>
+
+
+
+            <ion-item>
+              <ion-label stacked>Why do you think victim is at risk?</ion-label>
+              <ion-textarea required ngModel name="riskReason"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>How can we help the victim?</ion-label>
+              <ion-textarea required ngModel name="howWeCanHelp"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Location</ion-label>
+              <ion-input required ngModel name="location" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>How can we contact you?</ion-label>
+              <ion-textarea required ngModel name="contact"></ion-textarea>
+            </ion-item>
+
+            <ion-item>
+              <p margin-bottom="5px">Add a picture (optional)</p>
+              <input type="file" accept="image/*" (change)="changeListener($event)">
+            </ion-item>
+            <p *ngIf="uploadPercent" style="text-align: left; margin-left: 15px;">
+              <b style="color: #8b2701">upload: {{uploadPercent | async | number: '1.0-0'}}%</b>
+            </p>
+
+            <p *ngIf="uploadPercent" style="text-align: center; margin-left: 15px;">
+              <b>PREVIEW</b></p>
+            <div *ngIf="showPreview">
+              <img class="center" [src]="base64Picture" style="height: 30%; width: 30%;">
+            </div>
+
+
+            <ion-item>
+              <ion-label stacked>Any other useful information</ion-label>
+              <ion-textarea ngModel name="usefulInformation" required></ion-textarea>
+            </ion-item>
+
+            <ion-row margin-top="10px">
+              <ion-col col-md-3 col-1></ion-col>
+              <ion-col col-md-6 col-10>
+                <!--<button [disabled]="uploadUrl === '' || !victimForm.valid" block-->
+                <!--<button block-->
+                <!--ion-button (click)="upload(nonVictimForm)">FILE REPORT</button>-->
+              </ion-col>
+              <ion-col col-md-3 col-1></ion-col>
+            </ion-row>
+          </form>
+
+
+        </ion-card-content>
+      </ion-card>
+      <!--<ion-col col-md-2></ion-col>-->
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

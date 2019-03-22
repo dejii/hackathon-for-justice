@@ -14,3 +14,44 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.toolbar-background {
+  background: #3b5998;
+}
+
+.toolbar-title-md, .toolbar-title-ios, .toolbar-title-wp {
+  color: #fff;
+}
+
+ion-header ion-icon.back-button-icon {
+  color: #3b5998;
+}
+
+ion-content {
+  background: #f8f8f8 !important;
+}
+
+ion-item-divider {
+  background: #f8f8f8 !important;
+}
+.card-content-md {
+  padding: 0;
+}
+agm-map {
+  height: 300px;
+}
+.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner {
+  border-bottom-color: transparent;
+  -webkit-box-shadow: transparent;
+  box-shadow: transparent;
+}
+
+
+
+.item-label-stacked .text-input-md, .item-label-floating .text-input-md {
+  margin-left: 0;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid;
+  width: calc(100% - 8px);
+}

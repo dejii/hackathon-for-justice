@@ -1,1 +1,27 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Hackathon</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content style="background: #f8f8f8">
+    <br>
+    <ion-list>
+      <button style="background: #f8f8f8; border-bottom: 1px solid #1D2939" menuClose ion-item
+              *ngFor="let p of pages" (click)="openPage(p)">
+        <span *ngIf="p.title !== 'Results'">{{p.title}}</span>
+
+        <span *ngIf="p.title == 'Results'">{{p.title}} <ion-badge item-end color="danger">Coming Soon</ion-badge></span>
+      </button>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer>
+    <button menuClose style="border-top: 1px solid #1D2939" (click)="logout()" ion-item>Logout</button>
+  </ion-footer>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
