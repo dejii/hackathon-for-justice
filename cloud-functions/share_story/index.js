@@ -9,7 +9,7 @@ admin.initializeApp({
 });
 const firestore = admin.firestore();
 
-exports.request_full_help = async (req, res) => {
+exports.share_story = async (req, res) => {
 
     res.set('Access-Control-Allow-Origin', '*');
 
@@ -38,7 +38,7 @@ exports.request_full_help = async (req, res) => {
 
 const handlePOST = async (req, res) => {
 
-    const db = firestore.collection('full_requests');
+    const db = firestore.collection('stories');
 
     const data = req.body;
 
@@ -49,7 +49,7 @@ const handlePOST = async (req, res) => {
         });
         const options = {
             method: 'POST',
-            uri: 'https://us-central1-road20hub.cloudfunctions.net/make_post',
+            uri: 'https://us-central1-road20hub.cloudfunctions.net/story',
             body: data,
             json: true
         };
@@ -60,14 +60,14 @@ const handlePOST = async (req, res) => {
         if (postResponse.error) {
             return res.json({
                 statusCode: 200,
-                message: 'Request logged successfully -',
+                message: 'Story shared successfully -',
                 error: postResponse
             })
         }
 
         return res.json({
             statusCode: 200,
-            message: 'Request logged successfully'
+            message: 'Story shared successfully'
         })
     } catch (e) {
         return res.json({

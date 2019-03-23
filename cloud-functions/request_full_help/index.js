@@ -44,9 +44,7 @@ const handlePOST = async (req, res) => {
 
     try {
 
-        await db.add({
-            ...data
-        });
+
         const options = {
             method: 'POST',
             uri: 'https://us-central1-road20hub.cloudfunctions.net/make_post',
@@ -65,9 +63,34 @@ const handlePOST = async (req, res) => {
             })
         }
 
+        let encoding = [];
+        const encodeOptions = {
+            method: 'GET',
+            uri: `http://35.185.95.238/encode?url=${data.picture}`,
+            json: true
+        };
+
+        try {
+            const encodeResponse = await request(encodeOptions);
+
+            const enc = JSON.parse(encodeResponse)
+            if (enc.data) {
+                encoding = enc.data
+            }
+        } catch (e) {
+
+        }
+
+        await db.add({
+            ...data,
+            encoding
+        });
+
         return res.json({
             statusCode: 200,
-            message: 'Request logged successfully'
+            message: 'Request logged successfully',
+            encoding,
+            data
         })
     } catch (e) {
         return res.json({

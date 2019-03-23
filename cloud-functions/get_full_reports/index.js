@@ -40,7 +40,7 @@ const handleGET = async (req, res) => {
 
     try {
 
-        const ref = firestore.collection('full_reports');
+        const ref = firestore.collection('full_requests');
 
         const reports = await ref.get();
 
