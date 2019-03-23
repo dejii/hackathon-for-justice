@@ -1,0 +1,104 @@
+<div class="o-page o-page--center">
+    <div class="o-page__card">
+        <div class="c-card c-card--center">
+            <h4 class="u-mb-medium u-mt-medium">Add your location</h4>
+            <form #addLocationForm="ngForm">
+
+                <p class="u-text-left">Select State *</p>
+                <div class="c-select u-mb-small">
+                    <select class="c-select__input" name="state" ngModel required (ngModelChange)="getLGAs($event)">
+                        <option value="">Select State</option>
+                        <option value="1">ABIA</option>
+                        <option value="2">ADAMAWA</option>
+                        <option value="3">AKWA IBOM</option>
+                        <option value="4">ANAMBRA</option>
+                        <option value="5">BAUCHI</option>
+                        <option value="6">BAYELSA</option>
+                        <option value="7">BENUE</option>
+                        <option value="8">BORNU</option>
+                        <option value="9">CROSS RIVER</option>
+                        <option value="10">DELTA</option>
+                        <option value="11">EBONYI</option>
+                        <option value="12">EDO</option>
+                        <option value="13">EKITI</option>
+                        <option value="14">ENUGU</option>
+                        <option value="15">GOMBE</option>
+                        <option value="16">IMO</option>
+                        <option value="17">JIGAWA</option>
+                        <option value="18">KADUNA</option>
+                        <option value="19">KANO</option>
+                        <option value="20">KATSINA</option>
+                        <option value="21">KEBBI</option>
+                        <option value="22">KOGI</option>
+                        <option value="23">KWARA</option>
+                        <option value="24">LAGOS</option>
+                        <option value="25">NASARAWA</option>
+                        <option value="26">NIGER</option>
+                        <option value="27">OGUN</option>
+                        <option value="28">ONDO</option>
+                        <option value="29">OSUN</option>
+                        <option value="30">OYO</option>
+                        <option value="31">PLATEAU</option>
+                        <option value="32">RIVERS</option>
+                        <option value="33">SOKOTO</option>
+                        <option value="34">TARABA</option>
+                        <option value="35">YOBE</option>
+                        <option value="36">ZAMFARA</option>
+                        <option value="37">FCT ABUJA</option>
+                    </select>
+                </div>
+
+                <p class="u-text-left">Select LGA *</p>
+                <div class="c-select u-mb-small">
+                    <select class="c-select__input" name="lga" ngModel required (ngModelChange)="getWards($event)">
+                        <option value="">Select LGA</option>
+                        <option [value]="lga.lg_id" *ngFor="let lga of lgas">{{lga.lg_name}}</option>
+                    </select>
+                </div>
+
+                <p class="u-text-left">Select Ward </p>
+                <div class="c-select u-mb-small">
+                    <select class="c-select__input" name="ward" ngModel>
+                        <option value="">Select Ward</option>
+                        <option [value]="ward.wa_id" *ngFor="let ward of wards">{{ward.wa_name}}</option>
+                    </select>
+                </div>
+
+
+                <div class="c-field u-mb-small">
+                    <label class="c-field__label">Phone Number *</label>
+                    <input
+                            class="c-input u-mb-small" ngModel name="phoneNumber"
+                            type="tel" placeholder="Phone Number" required>
+                </div>
+
+                <p class="u-text-left">Select Gender *</p>
+                <div class="c-select u-mb-small">
+                    <select class="c-select__input" name="gender" ngModel required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+
+                <div class="c-field u-mb-small">
+                    <label class="c-field__label">Extra Information (If Any)</label>
+                    <textarea
+                            class="c-input u-mb-small" ngModel name="description"
+                            placeholder="Extra Information if any"></textarea>
+                </div>
+
+
+                <button [disabled]="!addLocationForm.valid"
+                        class="c-btn c-btn--fullwidth c-btn--info" (click)="addLocation(addLocationForm)">Add Location
+                </button>
+            </form>
+        </div>
+        <div class="u-text-center">
+            <!--<a style="color: #1972e0;" [routerLink]="['/sign-up']">Don't have an account? Register <u>here</u></a>-->
+        </div>
+        <div class="u-text-center u-mt-small">
+            <!--<a style="color: #1972e0;" [routerLink]="['/reset-pin']"><u>Forgot Password?</u></a>-->
+        </div>
+    </div>
+</div>

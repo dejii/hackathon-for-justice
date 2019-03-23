@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?itoha0');
+  src:  url('../fonts/icomoon.eot?itoha0#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?itoha0') format('truetype'),
+    url('../fonts/icomoon.woff?itoha0') format('woff'),
+    url('../fonts/icomoon.svg?itoha0#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="iicon-"], [class*=" iicon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.iicon-ai-transactions:before {
+  content: "\e900";
+}
+.iicon-ai-merchants:before {
+  content: "\e901";
+}
+.iicon-ai-wallet:before {
+  content: "\e905";
+}

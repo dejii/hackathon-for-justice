@@ -1,0 +1,20 @@
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+
+- url: /
+  static_files: dist/utilities-pay/index.html
+  upload: dist/utilities-pay/index.html
+- url: /dashboard/home
+  static_files: dist/utilities-pay/index.html
+  upload: dist/utilities-pay/index.html
+- url: /dashboard/file-upload
+  static_files: dist/utilities-pay/index.html
+  upload: dist/utilities-pay/index.html
+- url: /dashboard/reports
+  static_files: dist/utilities-pay/index.html
+  upload: dist/utilities-pay/index.html
+- url: /
+  static_dir: dist/utilities-pay

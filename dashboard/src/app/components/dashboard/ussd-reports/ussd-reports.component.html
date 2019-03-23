@@ -1,0 +1,34 @@
+<div style="min-height: 55vh;">
+  <div id="step12" class="c-table-responsive@wide">
+    <table class="c-table">
+      <thead class="c-table__head">
+      <tr class="c-table__row">
+        <th class="c-table__cell c-table__cell--head">Description</th>
+        <th class="c-table__cell c-table__cell--head">Phone Number</th>
+        <th class="c-table__cell c-table__cell--head">Location</th>
+        <th class="c-table__cell c-table__cell--head">Full Name</th>
+        <th class="c-table__cell c-table__cell--head">Family Contact</th>
+        <th class="c-table__cell c-table__cell--head">Additional Info</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let ussd of ussdReports | paginate: { id: 'ussd_pagination', itemsPerPage: limit, currentPage: page}" class="c-table__row">
+        <td class="c-table__cell">
+          {{ussd.location ? 'BASIC REPORT' : 'CALL BACK'}}
+        </td>
+        <td class="c-table__cell">{{ussd.phone_number}}</td>
+        <th class="c-table__cell">{{ussd.location ? ussd.location : 'N/A'}}</th>
+        <th class="c-table__cell">{{ussd.full_name ? ussd.full_name : 'N/A'}}</th>
+        <th class="c-table__cell">{{ussd.family_contact ? ussd.family_contact : 'N/A'}}</th>
+        <th class="c-table__cell">{{ussd.additional_info ? ussd.additional_info : 'N/A'}}</th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="u-mt-medium u-text-center" *ngIf="ussd_is_set && (ussdReports.length > 0)">
+    <pagination-controls [autoHide]="true" (pageChange)="page = $event" id="ussd_pagination"></pagination-controls>
+  </div>
+
+</div>

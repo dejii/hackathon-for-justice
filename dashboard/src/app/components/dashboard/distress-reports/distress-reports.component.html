@@ -1,0 +1,42 @@
+<div style="min-height: 55vh;">
+  <div id="step12" class="c-table-responsive@wide">
+    <table class="c-table">
+      <thead class="c-table__head">
+      <tr class="c-table__row">
+        <th class="c-table__cell c-table__cell--head">Image</th>
+        <th class="c-table__cell c-table__cell--head">Name</th>
+        <th class="c-table__cell c-table__cell--head">Location</th>
+        <th class="c-table__cell c-table__cell--head">Preview</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let distress of distressReports | paginate: { id: 'distress_pagination', itemsPerPage: limit, currentPage: page}" class="c-table__row">
+        <th class="c-table__cell">
+          <img style="width: 100px" [src]="distress.photoUrl">
+        </th>
+        <td class="c-table__cell">
+          {{distress.name ? distress.name : 'N/A'}}
+        </td>
+        <th class="c-table__cell">
+          <p>
+          <!--<p *ngIf="distress.location">-->
+            <span>{{distress.location ? distress.location : 'N/A'}}</span>
+          </p>
+          <a (click)="locationDetails(distress.lat, distress.lng)">
+            <small><u>VIEW ON MAPS</u></small>
+          </a>
+        </th>
+        <th class="c-table__cell">
+          <button class="c-btn c-btn--small" (click)="previewImage(distress.photoUrl)">PREVIEW</button>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="u-mt-medium u-text-center" *ngIf="distress_is_set && (distressReports.length > 0)">
+    <pagination-controls [autoHide]="true" (pageChange)="page = $event" id="distress_pagination"></pagination-controls>
+  </div>
+
+</div>

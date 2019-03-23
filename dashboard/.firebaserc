@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "hackathon-justice"
+  },
+  "targets": {
+    "hackathon-justice": {
+      "hosting": {
+        "admin": [
+          "justice-admin"
+        ]
+      }
+    }
+  }
+}

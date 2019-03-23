@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~firebaseui/dist/firebaseui.css';
+
+.ngx-pagination .current {
+  background: #2795dd !important;
+}
+
+.c-btn {
+  background: #2795DD !important;
+}
+.c-btn--danger {
+  background: #ED4D4D !important;
+}
+
+.airtime-box {
+  transition: all .3s ease-in-out;
+  box-shadow: 0 10px 6px -6px #777 !important;
+  background: #23d160 !important;
+
+}
+
+.airtime-box:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.c-card-bill {
+  margin-bottom: 30px;
+  padding: 30px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.bills-box {
+  transition: all .25s ease-in-out;
+  /*box-shadow: 0 10px 6px -6px #777 !important;*/
+  box-shadow: none;
+}
+
+.bills-box:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.c-state-card--payant{
+  background: #e8f8ff; /* Old browsers */
+  background: -webkit-linear-gradient(top,#e8f8ff 0,#afbeff 1%,#6774dd 1%,#4d5ada 2%,#5366e9 3%,#4d61e4 3%,#445ad2 4%,#5266df 5%,#4f5edf 6%,#525ae1 7%,#525bde 8%,#505cd4 8%,#4d5ed2 9%,#4c5bdc 11%,#4c59db 15%,#4957d2 18%,#4a58d2 20%,#4857ce 22%,#4a56d0 23%,#404eaf 43%,#434dae 46%,#3e49a3 53%,#4047a2 56%,#3d4596 63%,#3a418f 70%,#394287 74%,#373e84 78%,#343d76 86%,#353b77 90%,#333a70 92%,#313670 94%,#363871 96%,#333764 97%,#41466c 98%,#646a8a 99%,#f8feff 99%,#eef4ff 100%) !important;
+}
+

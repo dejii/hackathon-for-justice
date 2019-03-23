@@ -1,0 +1,54 @@
+<div style="min-height: 55vh;">
+  <div id="step12" class="c-table-responsive@wide" style="overflow: scroll">
+    <table class="c-table">
+      <thead class="c-table__head">
+      <tr class="c-table__row">
+        <th class="c-table__cell c-table__cell--head">Image</th>
+        <th class="c-table__cell c-table__cell--head">Full Name</th>
+        <th class="c-table__cell c-table__cell--head">Location</th>
+        <th class="c-table__cell c-table__cell--head">Age Group</th>
+        <th class="c-table__cell c-table__cell--head">How To Help</th>
+        <th class="c-table__cell c-table__cell--head">Contact</th>
+        <th class="c-table__cell c-table__cell--head">Why Victim is at risk</th>
+        <th class="c-table__cell c-table__cell--head">Useful Information</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let report of fullReports | paginate: { id: '_report_pagination', itemsPerPage: limit, currentPage: page}" class="c-table__row">
+        <th class="c-table__cell">
+          <img *ngIf="report.picture" style="width: 100px" [src]="report.picture ? report.picture : ''">
+          <p *ngIf="!report.picture">N/A</p>
+        </th>
+        <td class="c-table__cell">
+          {{report.full_name ? report.full_name : 'N/A'}}
+        </td>
+        <td class="c-table__cell">
+          {{report.location ? report.location : 'N/A'}}
+        </td>
+        <td class="c-table__cell">
+          {{report.age_group ? report.age_group : 'N/A'}}
+        </td>
+        <td class="c-table__cell">
+          {{report.how_to_help ? report.how_to_help : 'N/A'}}
+        </td>
+        <td class="c-table__cell">
+          {{report.contact ? report.contact : 'N/A'}}
+        </td>
+        <td class="c-table__cell">
+          {{report.why_victim_is_at_risk ? report.why_victim_is_at_risk : 'N/A'}}
+        </td>
+
+        <td class="c-table__cell">
+          {{report.useful_information ? report.useful_information : 'N/A'}}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="u-mt-medium u-text-center" *ngIf="reports_is_set && (fullReports.length > 0)">
+    <pagination-controls [autoHide]="true" (pageChange)="page = $event" id="_report_pagination"></pagination-controls>
+  </div>
+
+</div>

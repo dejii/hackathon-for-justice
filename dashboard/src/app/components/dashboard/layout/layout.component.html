@@ -1,0 +1,72 @@
+<ng-progress></ng-progress>
+<div class="o-page">
+  <div class="o-page__sidebar js-page-sidebar">
+    <aside class="c-sidebar">
+      <div class="c-sidebar__brand">
+        <!--<a [routerLink]="['/dashboard']" href=""><img src="assets/img/logo.png" alt="distress"></a>-->
+      </div>
+
+      <!-- Scrollable -->
+      <div class="c-sidebar__body">
+        <span class="c-sidebar__title">Menu</span>
+        <ul class="c-sidebar__list">
+          <li>
+            <a (click)="closeSideBar()" class="c-sidebar__link" [routerLinkActiveOptions]="{exact: true}"
+               routerLinkActive="is-active" [routerLink]="['/dashboard']">
+              <i class="c-sidebar__icon feather icon-home"></i>Dashboard
+            </a>
+          </li>
+          <li>
+            <a (click)="closeSideBar()" class="c-sidebar__link" [routerLinkActiveOptions]="{exact: true}"
+               routerLinkActive="is-active" [routerLink]="['/dashboard/distress-reports']">
+              <i class="c-sidebar__icon feather icon-home"></i>DISTRESS REPORTS
+            </a>
+          </li>
+          <li>
+            <a (click)="closeSideBar()" class="c-sidebar__link" [routerLinkActiveOptions]="{exact: true}"
+               routerLinkActive="is-active" [routerLink]="['/dashboard/full-reports']">
+              <i class="c-sidebar__icon feather icon-home"></i>FULL REPORTS
+            </a>
+          </li>
+          <li>
+            <a (click)="closeSideBar()" class="c-sidebar__link" [routerLinkActiveOptions]="{exact: true}"
+               routerLinkActive="is-active" [routerLink]="['/dashboard/ussd-reports']">
+              <i class="c-sidebar__icon feather icon-home"></i>USSD REPORTS
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+      <a (click)="logout()" class="c-sidebar__footer">
+        Logout <i class="c-sidebar__footer-icon feather icon-power"></i>
+      </a>
+    </aside>
+  </div>
+
+  <main class="o-page__content">
+    <header class="c-navbar u-mb-medium" style="background: #1972e0;">
+      <button class="c-sidebar-toggle js-sidebar-toggle" (click)="showSidebar()">
+        <i class="feather icon-align-left"></i>
+      </button>
+
+      <h2 style="color: #fff;" class="c-navbar__title">DISTRESS</h2>
+
+      <div class="c-dropdown dropdown">
+        <div class="c-avatar c-avatar--xsmall dropdown-toggle" id="dropdownMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+          <img class="c-avatar__img" [src]="user.avatar !== '' ? user.avatar : dummy_profile_image">
+          <!--<span class="u-ml-small u-color-white">Deji Ibrahim</span>-->
+        </div>
+
+        <div class="c-dropdown__menu has-arrow dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAvatar">
+          <a [routerLink]="['/dashboard/profile']" class="c-dropdown__item dropdown-item">Edit Profile</a>
+          <a (click)="logout()" class="c-dropdown__item dropdown-item">Log out</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

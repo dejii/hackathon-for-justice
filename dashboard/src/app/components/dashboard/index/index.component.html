@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="c-state-card c-state-card--info">
+      <h4 class="c-state-card__title">DISTRESS REPORTS</h4>
+      <span class="c-state-card__number">{{distressReports.length}}</span>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="c-state-card c-state-card--success">
+      <h4 class="c-state-card__title">FULL REPORTS</h4>
+      <span class="c-state-card__number">{{fullReports.length}}</span>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="c-state-card c-state-card--payant">
+      <h4 class="c-state-card__title">USSD REPORTS</h4>
+      <span class="c-state-card__number">{{ussdReports.length}}</span>
+    </div>
+  </div>
+
+</div>
+
+<div class="row u-mt-small">
+</div>
+
+<!--<agm-map [latitude]="lat" [longitude]="lng">-->
+  <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
+<!--</agm-map>-->
+
+<agm-map
+        [latitude]="lat" [longitude]="lng"
+        [zoomControl]="false">
+
+  <agm-marker
+          *ngFor="let m of markers; let i = index"
+          [latitude]="m.lat"
+          [longitude]="m.lng">
+
+  </agm-marker>
+
+  <!--<agm-circle [latitude]="lat + 0.3" [longitude]="lng"-->
+              <!--[radius]="5000"-->
+              <!--[fillColor]="'red'"-->
+              <!--[circleDraggable]="true"-->
+              <!--[editable]="true">-->
+  <!--</agm-circle>-->
+
+</agm-map>
