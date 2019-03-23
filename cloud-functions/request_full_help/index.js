@@ -9,7 +9,7 @@ admin.initializeApp({
 });
 const firestore = admin.firestore();
 
-exports.request_help = async (req, res) => {
+exports.request_full_help = async (req, res) => {
 
     res.set('Access-Control-Allow-Origin', '*');
 
@@ -38,38 +38,19 @@ exports.request_help = async (req, res) => {
 
 const handlePOST = async (req, res) => {
 
-    const db = firestore.collection('help_requests');
+    const db = firestore.collection('full_requests');
 
     const data = req.body;
 
     try {
 
-        const mapOptions = {
-            method: 'GET',
-            uri: `https://maps.googleapis.com/maps/api/geocode/json?latlng=${data.lat},${data.lng}&key=AIzaSyD2LimKZCfSz8TjQkkxUpzXiT_dXHh8XCw`,
-            json: true
-        };
-
-        const mapResponse = await request(mapOptions);
-        let address = '';
-        if (mapResponse.results[0].formatted_address) {
-            address = mapResponse.results[0].formatted_address;
-        } else {
-            address = `lat, lng: ${data.lat}, ${data.lng}`;
-        }
-
         await db.add({
-            ...data,
-            location: address
+            ...data
         });
         const options = {
             method: 'POST',
             uri: 'https://us-central1-road20hub.cloudfunctions.net/make_post',
-            body: {
-                full_name: data.name,
-                location: address,
-                picture: data.photoUrl
-            },
+            body: data,
             json: true
         };
 

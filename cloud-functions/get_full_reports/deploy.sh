@@ -1,0 +1,1 @@
+gcloud beta functions deploy get_full_reports --env-vars-file .env.yaml --runtime nodejs8 --trigger-http --project hackathon-justice
