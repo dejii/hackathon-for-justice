@@ -23,6 +23,14 @@ export class PwaProvider {
     return this.http.post(`${apiUrl}/request_help`, payload);
   }
 
+  requestFullHelp(payload) {
+    return this.http.post(`${apiUrl}/request_full_help`, payload);
+  }
+
+  shareStory(payload) {
+    return this.http.post(`${apiUrl}/share_story`, payload);
+  }
+
   getLocation(lat, lng) {
     console.log(lat, lng)
     return this.http.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyD2LimKZCfSz8TjQkkxUpzXiT_dXHh8XCw`);

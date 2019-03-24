@@ -15,12 +15,24 @@
 
 <ion-content no-padding>
 
-  <ion-fab bottom right>
-    <button (click)="requestHelp()" [disabled]="disableButton"
-            style="" ion-fab><ion-icon name="checkmark"></ion-icon></button>
-  </ion-fab>
+  <!--<ion-fab bottom right>-->
+    <!--<button (click)="requestHelp()" [disabled]="disableButton"-->
+            <!--style="" ion-fab><ion-icon name="checkmark"></ion-icon></button>-->
+  <!--</ion-fab>-->
 
-  <button (click)="fullScreen()">FULL</button>
+  <!--<button (click)="fullScreen()">FULL</button>-->
+
+  <!--<ion-row margin-top="5px">-->
+    <!--<ion-col col-md-9></ion-col>-->
+    <!--<ion-col col-md-3>-->
+      <!--<ion-item>-->
+        <!--<ion-label stacked>Languaage</ion-label>-->
+        <!--<ion-select [(ngModel)]="language">-->
+          <!--<ion-option value="English">English</ion-option>-->
+        <!--</ion-select>-->
+      <!--</ion-item>-->
+    <!--</ion-col>-->
+  <!--</ion-row>-->
 
   <ion-grid>
     <ion-row text-center>
@@ -30,10 +42,10 @@
 
           <ion-segment [(ngModel)]="victim">
             <ion-segment-button value="yes">
-              I am the victim
+              EMERGENCY
             </ion-segment-button>
             <ion-segment-button value="no">
-              I am not the victim
+              DETAILED FORM
             </ion-segment-button>
           </ion-segment>
 
@@ -115,14 +127,14 @@
 
             <ion-item margin-bottom="10px">
               <ion-label stacked>Full Name</ion-label>
-              <ion-input required [(ngModel)]="formName" name="fullName" type="text"></ion-input>
+              <ion-input required [ngModelOptions]="{standalone: true}" [(ngModel)]="formName" name="fullName" type="text"></ion-input>
             </ion-item>
 
 
             <ion-row>
               <ion-item>
                 <ion-label stacked>How can we find you? (optional description)</ion-label>
-                <ion-textarea required [(ngModel)]="formContact" name="locationDetails"></ion-textarea>
+                <ion-textarea required [ngModelOptions]="{standalone: true}" [(ngModel)]="formContact" name="locationDetails"></ion-textarea>
               </ion-item>
             </ion-row>
 
@@ -142,16 +154,16 @@
 
 
 
-          <form #nonVictimForm="ngForm" *ngIf="victim === 'no'">
+          <div *ngIf="victim === 'no'">
 
             <ion-item>
               <ion-label stacked>Victim's Name (optional)</ion-label>
-              <ion-input  ngModel name="victimName" type="text"></ion-input>
+              <ion-input  [ngModelOptions]="{standalone: true}" [(ngModel)]="vName" type="text"></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label stacked>Victim's Age Group</ion-label>
-              <ion-select required ngModel name="ageGroup">
+              <ion-select required [ngModelOptions]="{standalone: true}" [(ngModel)]="vAgeGroup">
                 <ion-option value="<18">Under 18</ion-option>
                 <ion-option value="18-65">18-65</ion-option>
                 <ion-option value="65>">65 and Above</ion-option>
@@ -160,64 +172,66 @@
 
             <ion-item>
               <ion-label stacked>Victim's Gender</ion-label>
-              <ion-select ngModel name="sex">
+              <ion-select [ngModelOptions]="{standalone: true}" [(ngModel)]="vGender">
                 <ion-option value="Male">Male</ion-option>
                 <ion-option value="Female">Female</ion-option>
               </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Location</ion-label>
+              <ion-input required [ngModelOptions]="{standalone: true}" [(ngModel)]="vLocation" type="text"></ion-input>
             </ion-item>
 
 
 
             <ion-item>
               <ion-label stacked>Why do you think victim is at risk?</ion-label>
-              <ion-textarea required ngModel name="riskReason"></ion-textarea>
+              <ion-textarea required [(ngModel)]="vWhyVictimAtRisk" [ngModelOptions]="{standalone: true}"></ion-textarea>
             </ion-item>
 
             <ion-item>
               <ion-label stacked>How can we help the victim?</ion-label>
-              <ion-textarea required ngModel name="howWeCanHelp"></ion-textarea>
+              <ion-textarea required [ngModelOptions]="{standalone: true}" [(ngModel)]="vHowToHelp"></ion-textarea>
             </ion-item>
 
-            <ion-item>
-              <ion-label stacked>Location</ion-label>
-              <ion-input required ngModel name="location" type="text"></ion-input>
-            </ion-item>
+
 
             <ion-item>
               <ion-label stacked>How can we contact you?</ion-label>
-              <ion-textarea required ngModel name="contact"></ion-textarea>
+              <ion-textarea required [ngModelOptions]="{standalone: true}" [(ngModel)]="vContact"></ion-textarea>
             </ion-item>
 
             <ion-item>
               <p margin-bottom="5px">Add a picture (optional)</p>
               <input type="file" accept="image/*" (change)="changeListener($event)">
             </ion-item>
-            <p *ngIf="uploadPercent" style="text-align: left; margin-left: 15px;">
+            <p *ngIf="showPreview" style="text-align: center;">
               <b style="color: #8b2701">upload: {{uploadPercent | async | number: '1.0-0'}}%</b>
             </p>
 
-            <p *ngIf="uploadPercent" style="text-align: center; margin-left: 15px;">
+            <p *ngIf="showPreview" style="text-align: center; margin-left: 15px;">
               <b>PREVIEW</b></p>
             <div *ngIf="showPreview">
-              <img class="center" [src]="base64Picture" style="height: 30%; width: 30%;">
+              <img class="center" [src]="base64Picture" style="height: 30%; width: 30%; margin: 0 auto">
             </div>
 
 
             <ion-item>
               <ion-label stacked>Any other useful information</ion-label>
-              <ion-textarea ngModel name="usefulInformation" required></ion-textarea>
+              <ion-textarea [ngModelOptions]="{standalone: true}" [(ngModel)]="vUsefulInformation"required></ion-textarea>
             </ion-item>
 
             <ion-row margin-top="10px">
               <ion-col col-md-3 col-1></ion-col>
               <ion-col col-md-6 col-10>
                 <!--<button [disabled]="uploadUrl === '' || !victimForm.valid" block-->
-                <!--<button block-->
-                <!--ion-button (click)="upload(nonVictimForm)">FILE REPORT</button>-->
+                <button block [disabled]="!showPreview"
+                        ion-button (click)="sendFullHelpRequest()">SEND DETAILS</button>
               </ion-col>
               <ion-col col-md-3 col-1></ion-col>
             </ion-row>
-          </form>
+          </div>
 
 
         </ion-card-content>

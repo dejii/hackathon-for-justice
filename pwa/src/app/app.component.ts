@@ -10,7 +10,7 @@ export class MyApp {
 
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = 'HomePage';
+  rootPage: any = 'RequestHelpPage';
 
   pages: Array<{title: string, component: any}>;
 
@@ -18,8 +18,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: 'HomePage' },
-      { title: 'File Report', component: 'FileMissingReportPage'},
+      // { title: 'Home', component: 'HomePage' },
+      // { title: 'File Report', component: 'FileMissingReportPage'},
       { title: 'Request Help', component: 'RequestHelpPage'},
       { title: 'Get Justice', component: 'GetJusticePage'}
     ];

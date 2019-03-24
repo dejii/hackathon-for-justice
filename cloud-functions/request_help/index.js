@@ -89,10 +89,7 @@ const handlePOST = async (req, res) => {
         };
         try {
             const encodeResponse = await request(encodeOptions);
-            const enc = JSON.parse(encodeResponse)
-            if (enc.data) {
-                encoding = enc.data
-            }
+            encoding = encodeResponse
         } catch (e) {
 
         }
@@ -106,14 +103,16 @@ const handlePOST = async (req, res) => {
         return res.json({
             statusCode: 200,
             message: 'Request logged successfully',
-            data: encoding
+            data: encoding,
+            uri: `http://35.185.95.238/encode?url=${data.photoUrl}`,
         })
     } catch (e) {
         return res.json({
             statusCode: 400,
             message: 'Request failed',
             error: e.message,
-            data
+            data,
+            e
         })
     }
 };

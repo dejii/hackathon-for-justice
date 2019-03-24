@@ -357,6 +357,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 MIT
 MIT
 
+@angular/forms@6.0.6
+MIT
+MIT
+
 firebaseui@3.5.2
 Apache-2.0
 Apache License
@@ -698,15 +702,11 @@ IN THE SOFTWARE.
 MIT
 MIT
 
-@angular/fire@5.1.1
-MIT
-MIT
-
 @angular/core@6.0.6
 MIT
 MIT
 
-@angular/forms@6.0.6
+@angular/fire@5.1.1
 MIT
 MIT
 

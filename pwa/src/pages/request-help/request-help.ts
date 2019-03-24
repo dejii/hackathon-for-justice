@@ -22,9 +22,11 @@ import {PwaProvider} from "../../providers/pwa/pwa";
 })
 export class RequestHelpPage {
   base64Picture = '';
+  base64PictureUrl = '';
   showPreview = false;
   showUploadPercent = false;
   uploadPercent: Observable<number | undefined>;
+  uploadPercent_: Observable<number | undefined>;
   private uploadUrl = '';
   showMap = false
   private filePath = '';
@@ -35,6 +37,7 @@ export class RequestHelpPage {
   formName = '';
 
   victim = 'yes';
+  language = 'English';
   lng = '';
   lat = '';
 
@@ -58,6 +61,15 @@ export class RequestHelpPage {
   private nextWebcam: Subject<boolean | string> = new Subject<boolean | string>();
   formattedAddress = '';
   disableButton = true;
+
+  vName = '';
+  vAgeGroup = '';
+  vGender = '';
+  vWhyVictimAtRisk = '';
+  vHowToHelp = '';
+  vLocation = '';
+  vContact = '';
+  vUsefulInformation = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private toastCtrl: ToastController, private storage: AngularFireStorage,
@@ -176,7 +188,7 @@ export class RequestHelpPage {
 
   changeListener($event): void {
     this.readThis($event.target);
-    this.uploadFile($event)
+    this.uploadBase64($event)
   }
 
   readThis(inputValue: any): void {
@@ -217,6 +229,38 @@ export class RequestHelpPage {
         console.log(url);
         this.disableButton = false;
         this.uploadUrl = url;
+      })
+    )
+      .subscribe();
+  }
+
+
+  uploadBase64(event) {
+    // const ref = this.storage.ref(filePath);
+    // const task = ref.putString(this.base64String);
+    // const file = event.target.files[0];
+    const file = event.target.files[0];
+    const filePath = uuid();
+    const fileRef = this.storage.ref(filePath);
+    this.showUploadPercent = true;
+    const task = this.storage.upload(filePath, file);
+
+    // observe percentage changes
+    this.uploadPercent = task.percentageChanges();
+    // get notified when the download URL is available
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        return this.setBase64(fileRef.getDownloadURL());
+      })
+    )
+      .subscribe();
+  }
+
+  setBase64($imageURL: Observable<any>) {
+    $imageURL.pipe(
+      tap((url: string) => {
+        console.log(url);
+        this.base64PictureUrl =url
       })
     )
       .subscribe();
@@ -293,7 +337,7 @@ export class RequestHelpPage {
         toast.present();
         console.log(res)
         if (res.statusCode === 200) {
-
+          this.navCtrl.setRoot('SuccessPage');
         }
       }, (err) => {
         loader.dismiss();
@@ -309,6 +353,41 @@ export class RequestHelpPage {
 
   async getAddress(lat, lng) {
     return this.pwaProvider.getLocation(lat, lng).toPromise();
+  }
+
+
+  sendFullHelpRequest() {
+    const payload = {
+      full_name: this.vName,
+      location: this.vLocation,
+      age_group: this.vAgeGroup,
+      why_victim_is_at_risk: this.vWhyVictimAtRisk,
+      how_to_help: this.vHowToHelp,
+      contact: this.vContact,
+      picture: this.base64PictureUrl,
+      useful_information: this.vUsefulInformation
+    }
+    console.log(payload)
+    const loader = this.loadingCtrl.create();
+    loader.present();
+
+    this.pwaProvider.requestFullHelp(payload)
+      .subscribe((res: any) => {
+        loader.dismiss();
+        console.log(res)
+        const toast = this.toastCtrl.create({
+          message: res.message,
+          position: 'top',
+          duration: 3000
+        })
+        toast.present();
+        if (res.statusCode === 200) {
+          this.navCtrl.setRoot('SuccessPage');
+        }
+      }, (err) => {
+        loader.dismiss();
+        console.log(err)
+      })
   }
 
 
