@@ -5,13 +5,13 @@ import uuid
 import os
 from PIL import Image, ImageDraw
 
-import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
-from google.cloud import storage
+# import firebase_admin
+# from firebase_admin import credentials
+# from firebase_admin import firestore
+# from google.cloud import storage
 
-cred = credentials.Certificate('./hackathon-justice-firebase-adminsdk-6lwls-2c7a03d672.json')
-firebase_admin.initialize_app(cred)
+# cred = credentials.Certificate('./hackathon-justice-firebase-adminsdk-6lwls-2c7a03d672.json')
+# firebase_admin.initialize_app(cred)
 
 
 def encodeFaces(fileRef):
@@ -26,6 +26,7 @@ def encodeFaces(fileRef):
     # blob.download_to_filename(temp)
 
     image = face_recognition.load_image_file('IMG_8624 2.JPG')
+    # image = face_recognition.load_image_file('_MG_2339.JPG')
 
     face_encodings = face_recognition.face_encodings(image)
     face_locations = face_recognition.face_locations(image)
