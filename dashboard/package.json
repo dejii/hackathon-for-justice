@@ -28,7 +28,7 @@
     "@ngx-progressbar/core": "^5.0.1",
     "@ngx-progressbar/http": "^5.0.1",
     "core-js": "^2.5.4",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "firebase": "^5.8.3",
     "firebaseui": "^3.5.2",
     "firebaseui-angular": "^3.4.1",
